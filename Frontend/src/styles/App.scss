@@ -1,0 +1,76 @@
+@import 'variables';
+
+
+html, body {
+    margin: 0;
+    padding: 20px;
+    height: 100%;
+    min-height: 100%;
+    font: 1.05rem/1.35 'Nunito', serif;
+    background-color: $background-color;
+    color: #4d4d4d;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.cover {
+}
+
+div .button {
+    display: flex;
+}
+
+button, select {
+    font-family: 'Nunito';
+    /*font-size: calc( (100vw - Vmin)/(Vmax - Vmin) * (Fmax - Fmin) + Fmin);*/
+    font-size: calc( (100vw - 30rem)/(80 - 30) * (1.0 - 0.6) + 0.6rem);
+    text-transform: uppercase;
+    letter-spacing: .7rem;
+    border: none;
+    margin: 0 10px 10px 10px;
+    padding: 10px 25px;
+    border-radius: 9px;
+    background: $background-color;
+    transition: 0.3s;
+    min-width: $card-min-width;
+  }
+
+button:hover, select:hover {
+    box-shadow: $box-shadow;
+    transform: scale(1.05);
+}
+
+.active{
+    font-weight: 700;
+    color: $head-menu-color;
+    text-decoration: none;
+}
+
+.normal {
+    color: $head-menu-color;
+    text-decoration: none;
+}
+
+@media (max-width: 1080px) {
+    div .button {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: $card-min-width;
+    }
+}
+@media (min-width: 1080px) {
+    div .button {
+        justify-content: center;
+        align-items: center;
+        flex-flow: row wrap;
+    }
+}

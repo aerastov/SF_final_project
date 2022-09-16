@@ -1,0 +1,71 @@
+@import 'variables';
+
+.about {
+  min-width: $card-min-width;
+  margin: 0;
+}
+
+.name {
+  font-size: calc( (100vw - 30rem)/(80 - 30) * (4 - 2) + 2rem);
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: .7rem;
+  color: black;
+  min-width: $card-min-width;
+  margin: 0 0 0 20px ;
+}
+
+.foto {
+  width: 100%;
+  //object-fit: contain;
+  opacity: 0.2;
+
+
+}
+.foto_div {
+  position: absolute;
+  //object-fit:cover;
+}
+
+.stack {
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+  margin: 0 0 0 20px ;
+}
+
+.home {
+  min-height: 70vh;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-flow: row wrap;
+  //  //overflow: hidden;
+
+}
+
+
+@media (max-width: 637px) {
+  .foto_div {
+    top: 250px;
+    left: 25%;
+    width: 600px;
+  }
+}
+
+@media (max-width: 1080px) and (min-width: 637px) {
+  .foto_div {
+    top: 250px;
+    left: 35%;
+    width: 700px;
+  }
+
+}
+
+@media (min-width: 1080px) {
+  .foto_div {
+    top: 150px;
+    left: 45%;
+    width: 60vw;
+  }
+}

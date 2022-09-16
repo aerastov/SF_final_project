@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+
+  web:
+    build: ./VideoBox
+    container_name: django
+    restart: on-failure
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./VideoBox/:/usr/src/app/
+      - ./VideoBox/static/:/usr/src/app/static/
+      - ./VideoBox/media/:/usr/src/app/media/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:14-alpine
+    container_name: postgres_db
+    restart: on-failure
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    env_file:
+      - ./.env.dev
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 2s
+      timeout: 1s
+      retries: 5
+      start_period: 1s
+volumes:
+  postgres:
+  static_volume:
+  media_volume:
+

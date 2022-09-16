@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+# import os
 from pathlib import Path
+from os import environ
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,13 +24,31 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=cd@@@&8#ch)5tn=%763n73to&@p8e7*ji@)w$h4fss(lc%%bn'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
+######################################################################################
+# SECRET_KEY = 'django-insecure-=cd@@@&8#ch)5tn=%763n73to&@p8e7*ji@)w$h4fss(lc%%bn'
+
+from .secret_key import *
+DEBUG = int(environ.get('DEBUG', True))
 ALLOWED_HOSTS = []
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': environ.get('POSTGRES_ENGINE', 'django.db.backends.postgresql'),
+        'NAME': environ.get('POSTGRES_DB', 'django_db'),
+        'USER': environ.get('POSTGRES_USER', 'django_user'),
+        'PASSWORD': environ.get('POSTGRES_PASSWORD', 'django_password'),
+        'HOST': environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': environ.get('POSTGRES_PORT', '5432'),
+    }
+}
+
+
+
+#################################################################################
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://127.0.0.1:8000",]
 
 # Application definition
 
@@ -37,7 +59,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'corsheaders',
+    'accounts',
+    'box',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,18 +96,21 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'VideoBox.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 
 
 # Password validation
@@ -103,19 +135,23 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "static"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
