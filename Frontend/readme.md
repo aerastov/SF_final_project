@@ -7,7 +7,7 @@
 
 
 ## Установка и запуск среды разработки React + Webpack
-Клонировать репозиторий `https://github.com/aerastov/resume.git`  
+Клонировать репозиторий ``  
 В консоли перейти в папку проекта  
 Восстановить модули: `npm install`   
 Запуск СЕРВЕРА DevServer: `npm run start`  
@@ -20,3 +20,11 @@ e-mail: a.erastov@gmail.com
 Группа SkillFactory: FPW-36  
 Москва, август 2022г.
 
+
+
+npx create-react-app videobox
+npm i react-router
+npm i react-router-dom
+npm i axios
+npm i sass //for sass/scss
+npm i @react-oauth/google

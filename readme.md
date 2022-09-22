@@ -64,8 +64,8 @@
 http://localhost:8000  
 Войти на страницу администрирования можно по адресу:  
 http://localhost:8000/admin  
-логин: admin  
-пароль: admin
+логин:
+пароль:
 
 
 
@@ -100,7 +100,10 @@ python manage.py runserver
 
 pip install django
 pip install djangorestframework
-python -m pip install django-cors-headers
+pip install django-cors-headers //для обработки запросов с разных доменов
 pip install psycopg2-binary
+pip install requests
+pip install django-phonenumber-field[phonenumbers]
+pip install Pillow //для работы с ImageField
 
 -->
