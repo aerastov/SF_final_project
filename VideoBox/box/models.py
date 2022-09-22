@@ -31,6 +31,10 @@ class HashTag(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Хэштег'
+        verbose_name_plural = 'Хэштеги'
+
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -53,6 +57,11 @@ class Likes(models.Model):
     dateCreation = models.DateTimeField(auto_now_add=True, verbose_name='Опубликован')
     dateEdit = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'Лайк'
+        verbose_name_plural = 'Лайки'
+
+
 class Subscription(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, null=True, on_delete=models.CASCADE)
@@ -60,8 +69,17 @@ class Subscription(models.Model):
     def __str__(self):
         return f'{self.user} подписан на {self.author}'
 
+    class Meta:
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
+
+
 class Ban(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=512, verbose_name='Причина')
     dateCreation = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
     duration = models.IntegerField(default=0, blank=True)
+
+    class Meta:
+        verbose_name = 'Бан'
+        verbose_name_plural = 'Баны'

@@ -14,7 +14,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('Фамилия'), max_length=30, blank=True)
     username = models.CharField(_('Логин'), max_length=30, unique=True)
     email = models.EmailField(_('email'), unique=True)
-    phone = PhoneNumberField(_('Телефон'),unique=True)
+    phone = PhoneNumberField(_('Телефон, пример: +79159998877'),unique=True)
     tg = models.CharField(_('Телеграм'), max_length=64, validators=[validate_tg], blank=True)
     birth = models.DateField(_('День рождения'), null=True, blank=True)
     date_joined = models.DateTimeField(_('Зарегистрирован'), auto_now_add=True)
