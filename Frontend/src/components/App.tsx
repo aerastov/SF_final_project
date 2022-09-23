@@ -2,12 +2,13 @@ import * as React from "react";
 import { Routes, Route, Outlet, Link, NavLink } from "react-router-dom";
 import '../styles/App.scss';
 
-
 import Home from './Home.tsx';
 import Account from './Account.tsx';
 import NoMatch from './404.tsx';
 
+
 export default function App() {
+
   return (
     <div>
         <div className='center_column'>
@@ -53,10 +54,31 @@ function Layout() {
 
 
 
+// import { createStore } from "redux";
 
 
-
-
+//     const store = createStore(changeStore)
+//     function changeStore(state=[], action) {
+//         console.log('1', state)
+//         switch (action.type) {
+//             case 'WRITE':
+//                 return [
+//                     ...state,
+//                     action.payload
+//                 ]
+//             break;
+//             default:
+//                 return state
+//         }
+//         return state
+//     }
+//     console.log('store', store)
+//     console.log('2', store.getState('rrr'))
+//     store.subscribe(() => {
+//         console.log('subscribe', store.getState())
+//     })
+//     store.dispatch({type: 'WRITE', payload:{'rrr': 123}})
+// //     store.dispatch({type: 'WRITE', payload:'HGTFJUHYFG'})
 
 
 

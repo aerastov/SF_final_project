@@ -28,3 +28,4 @@ npm i react-router-dom
 npm i axios
 npm i sass //for sass/scss
 npm i @react-oauth/google
+npm i redux
